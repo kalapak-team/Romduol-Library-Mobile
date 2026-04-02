@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="$FLUTTER_BASE_HREF">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="Romduol Library">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Romduol Library">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="https://res.cloudinary.com/di1hdlb8k/image/upload/q_auto/f_auto/v1775060565/Copilot_20260401_2315251_ansle3.png"/>
+
+  <title>Romduol Library</title>
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <!-- Handle download requests posted from pdf_viewer.html iframe -->
+  <script>
+    window.addEventListener('message', function(e) {
+      if (!e.data || e.data.type !== 'pdf-download') return;
+      // The iframe transfers its ArrayBuffer here; we create a fresh Blob
+      // and a local blob URL — no cross-agent-cluster blob URL issues.
+      var blob = new Blob([e.data.buffer], { type: 'application/pdf' });
+      var url  = URL.createObjectURL(blob);
+      var a    = document.createElement('a');
+      a.href     = url;
+      a.download = e.data.filename || 'document.pdf';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(function() { URL.revokeObjectURL(url); }, 30000);
+    });
+  </script>
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>

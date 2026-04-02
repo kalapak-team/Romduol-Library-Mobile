@@ -1,0 +1,9 @@
+# លាក់ folder build របស់ Flutter និង vendor របស់ Laravel
+frontend/build/
+backend/vendor/
+backend/.env
+backend/public/storage
+node_modules/
+.idea/
+.vscode/
+*.loggit add .
