@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="Demo/Romduol2.jpg" width="700" alt="Romduol Library Preview"/>
-</p>
-
 <h1 align="center">🌸 Romduol Library</h1>
 
 <p align="center">
